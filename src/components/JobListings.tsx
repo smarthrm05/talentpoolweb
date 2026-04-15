@@ -34,6 +34,39 @@ const jobs = [
     urgent: false,
     posted: "5 hari yang lalu",
   },
+  {
+    title: "Data Analyst",
+    company: "DataCore Indonesia",
+    location: "Bandung",
+    type: "Fulltime",
+    workMode: "Hybrid",
+    salary: "Rp12jt-22jt",
+    skills: ["Python", "SQL", "Tableau"],
+    urgent: true,
+    posted: "3 hari yang lalu",
+  },
+  {
+    title: "Product Manager",
+    company: "StartupNation",
+    location: "Yogyakarta",
+    type: "Contract",
+    workMode: "Remote",
+    salary: "Rp18jt-35jt",
+    skills: ["Scrum", "Jira", "Roadmapping"],
+    urgent: false,
+    posted: "1 minggu yang lalu",
+  },
+  {
+    title: "Sales Executive",
+    company: "GoRetail",
+    location: "Jakarta",
+    type: "Fulltime",
+    workMode: "On Site",
+    salary: "Rp7jt-14jt",
+    skills: ["B2B Sales", "CRM", "Negotiation"],
+    urgent: true,
+    posted: "4 hari yang lalu",
+  },
 ];
 
 const getCompanyLogo = (name) =>
@@ -194,10 +227,7 @@ const JobListings = () => {
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeWidth={2}
-                        d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-4-7 4V5z"
-                      />
+                      <path strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-4-7 4V5z" />
                     </svg>
                   </div>
                 </div>
