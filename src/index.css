@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 215 85% 17%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 75% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 75% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 220 100% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 60% 22%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 50% 25%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 195 100% 47%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 40% 25%;
+    --input: 215 40% 25%;
+    --ring: 220 100% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --navy-deep: 215 85% 17%;
+    --navy-darker: 215 80% 10%;
+    --glow-blue: 220 100% 60%;
+    --glow-cyan: 195 100% 47%;
+    --glass-bg: 215 60% 20%;
+    --glass-border: 215 40% 35%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(220 100% 60%), hsl(195 100% 47%));
+    --gradient-hero: linear-gradient(180deg, hsl(215 85% 10%) 0%, hsl(215 85% 17%) 50%, hsl(215 80% 14%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(220 100% 55%), hsl(195 100% 50%));
+    --gradient-glow: radial-gradient(ellipse at center, hsl(220 100% 60% / 0.15) 0%, transparent 70%);
+
+    --shadow-glow: 0 0 40px hsl(220 100% 60% / 0.3);
+    --shadow-card: 0 8px 32px hsl(215 85% 5% / 0.5);
+    --shadow-lift: 0 12px 40px hsl(215 85% 5% / 0.6);
+
+    --sidebar-background: 215 80% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 220 100% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 60% 22%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 40% 25%;
+    --sidebar-ring: 220 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-glass/40 backdrop-blur-xl border border-glass-border rounded-xl;
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .glow-button {
+    background-image: var(--gradient-cta);
+    box-shadow: var(--shadow-glow);
+    @apply text-primary-foreground font-semibold px-8 py-4 rounded-xl transition-all duration-300;
+  }
+
+  .glow-button:hover {
+    box-shadow: 0 0 60px hsl(220 100% 60% / 0.5);
+    transform: translateY(-2px);
+  }
+
+  .section-dark {
+    background-color: hsl(215 80% 10%);
+  }
+
+  .section-navy {
+    background-color: hsl(215 85% 17%);
+  }
+
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-animation-delayed {
+    animation: float 6s ease-in-out 2s infinite;
+  }
+
+  .glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  .particle-bg {
+    background-image: var(--gradient-glow);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px hsl(220 100% 60% / 0.2); }
+  50% { box-shadow: 0 0 50px hsl(220 100% 60% / 0.5); }
+}
+
+@keyframes particle {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+}
+
+@keyframes crystalShift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
+  33% { transform: translate(30px, -20px) scale(1.1); opacity: 0.8; }
+  66% { transform: translate(-20px, 15px) scale(0.95); opacity: 0.5; }
+}
