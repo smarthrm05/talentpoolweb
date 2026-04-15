@@ -69,6 +69,33 @@ const jobs = [
   },
 ];
 
+// 🔥 VARIANTS ANIMATION
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 50,
+    scale: 0.95,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 const getCompanyLogo = (name) =>
   `https://ui-avatars.com/api/?name=${encodeURIComponent(
     name
@@ -82,9 +109,8 @@ const JobListings = () => {
         {/* HEADING */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -99,10 +125,20 @@ const JobListings = () => {
           </p>
         </motion.div>
 
-        {/* GRID */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+        {/* GRID WITH STAGGER */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch"
+        >
           {jobs.map((job, i) => (
-            <motion.div key={i} whileHover={{ y: -6 }} className="h-full">
+            <motion.div
+              key={i}
+              variants={cardVariants}
+              whileHover={{ y: -8, scale: 1.03 }}
+              className="h-full"
+            >
               <div className="h-full flex flex-col justify-between rounded-2xl p-6 
               bg-gradient-to-br from-[#0F2A5F] via-[#123879] to-[#0A1F4D]
               border border-white/10 shadow-xl shadow-blue-900/40">
@@ -162,18 +198,8 @@ const JobListings = () => {
                           stroke="currentColor"
                           viewBox="0 0 24 24"
                         >
-                          <path
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z"
-                          />
-                          <path
-                            strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
+                          <path strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                          <path strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
 
                         <span>{job.location}</span>
@@ -181,7 +207,7 @@ const JobListings = () => {
                     </div>
                   </div>
 
-                  {/* STATUS BADGE + WORK MODE */}
+                  {/* STATUS + WORK MODE */}
                   <div className="flex flex-wrap gap-2 mb-4">
 
                     {job.urgent && (
@@ -235,7 +261,7 @@ const JobListings = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       {/* TAG STYLE */}
